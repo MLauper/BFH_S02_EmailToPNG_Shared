@@ -68,8 +68,6 @@ public class Image {
         java.awt.FileDialog dialog = new FileDialog((java.awt.Frame) null, "Save as...", FileDialog.SAVE);
         dialog.setFile("EmailPNG.png");
         dialog.setVisible(true);
-        System.out.println(dialog.getDirectory());
-        System.out.println(dialog.getFile());
         saveImage(dialog.getDirectory() + dialog.getFile());
     }
 }
