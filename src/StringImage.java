@@ -1,82 +1,54 @@
-import javax.imageio.ImageIO;
 import java.awt.*;
-import java.awt.font.FontRenderContext;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 
 /**
- * Created by Marco on 15.03.14.
+ * Provides a StringImage. Basically provides the functionality to convert a simple string to an image.
  */
-public class StringImage extends Image{
+public class StringImage extends Image {
     private String string;
     private Graphics graphicsImage;
 
-    public Graphics getGraphicsImage() {
-        return graphicsImage;
-    }
+    /**
+     * Class Constructor.
+     * Create an Image based on the provided String
+     * Image Size: 500x42
+     * @param string to be represented by the image.
+     */
     public StringImage(String string) {
-        //super("bld.jpg");
-        bufferedImage = new BufferedImage(500,42,BufferedImage.TYPE_INT_ARGB);
+        bufferedImage = new BufferedImage(500, 42, BufferedImage.TYPE_INT_ARGB);
         this.string = string;
         this.renderImage();
     }
 
+    /**
+     * Class Constructor. Create an Image which is completely transparent.
+     * Image Size: 500x42
+     */
     public StringImage() {
-        bufferedImage = new BufferedImage(500,42,BufferedImage.TYPE_INT_ARGB);
-        //this.string = string;
-        //this.renderImage();
+        bufferedImage = new BufferedImage(500, 42, BufferedImage.TYPE_INT_ARGB);
     }
 
-    public String getString() {
-        return string;
+    /**
+     * Change the string represented by the image.
+     * @param string to be represented by the image.
+     */
+    public void setString(String string) {
+        this.string = string;
+        bufferedImage = new BufferedImage(500, 42, BufferedImage.TYPE_INT_ARGB);
+        this.renderImage();
     }
 
-    private void renderImage(){
-        //Work with BufferedImage
-        //-> Has a ColorModel and a Raster
+    /**
+     * Render the image based on the current string.
+     */
+    private void renderImage() {
         graphicsImage = bufferedImage.createGraphics();
 
-        graphicsImage.setFont(new Font("Serif", Font.BOLD, 20));
-        //FontMetrics fm = graphicsImage.getFontMetrics();
-            System.out.println(graphicsImage.getFont());
-            System.out.println(string);
-        Font font = new Font("Serif", Font.PLAIN, 36);
-        graphicsImage.setFont(font);
-        //FontRenderContext frc = ((Graphics2D)graphicsImage).getFontRenderContext();
+        graphicsImage.setFont(new Font("Serif", Font.PLAIN, 36));
         graphicsImage.setColor(Color.BLUE);
 
-        graphicsImage.drawString(string,10,32);
+        graphicsImage.drawString(string, 10, 32);
         graphicsImage.dispose();
 
     }
-
-    public void setString(String string){
-        this.string = string;
-        bufferedImage = new BufferedImage(500,42,BufferedImage.TYPE_INT_ARGB);
-        this.renderImage();
-    }
-
-    private BufferedImage getImage(){
-        this.renderImage();
-        return bufferedImage;
-    }
-
-//    @Override
-//    public void saveImage(String relativePath) {
-//        File saveFile = new File(relativePath);
-//        new java.awt.FileDialog((java.awt.Frame) null).setVisible(true);
-//        //JFileChooser chooser = new JFileChooser();
-//        //chooser.setSelectedFile(saveFile);
-//        //int rval = chooser.showSaveDialog(cb);
-////        if (rval == JFileChooser.APPROVE_OPTION) {
-////            saveFile = chooser.getSelectedFile();
-////                 /* Write the filtered image in the selected format,
-////                  * to the file chosen by the user.
-////                  */
-//        try {
-//            ImageIO.write(graphicsImage, "PNG", saveFile);
-//        } catch (IOException ex) {
-//        }
-//    }
 }

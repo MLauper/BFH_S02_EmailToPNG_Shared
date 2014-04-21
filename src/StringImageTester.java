@@ -1,14 +1,10 @@
 /**
- * Created by Marco on 15.03.14.
+ * Simple Test for StringImage
  */
 public class StringImageTester {
 
     public static void main(String[] args) {
-        //MainWindow myWindow = new MainWindow();
-
-        StringImage myStringImage = new StringImage ("TestString");
-        //myStringImage.saveImage("bld2.jpg");
+        StringImage myStringImage = new StringImage("TestString");
         myStringImage.saveImage("output.png");
-
     }
 }
