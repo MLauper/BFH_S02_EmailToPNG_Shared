@@ -20,7 +20,7 @@ public class MainWindow extends JFrame {
 
         // Create JPanel and add GUI Elemetns
         JPanel rootPanel = new JPanel();
-        eMailTextField = new JTextField("E-Mail Adresse", 40);
+        eMailTextField = new JTextField("E-Mail Adresse", 20);
         eMailTextField.setFont(new Font("Serif", Font.BOLD, 20));
         rootPanel.add(eMailTextField, BorderLayout.NORTH);
         eMailLabel = new JLabel();
@@ -31,7 +31,7 @@ public class MainWindow extends JFrame {
         rootPanel.add(saveImageButton, BorderLayout.EAST);
         setContentPane(rootPanel);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setSize(650, 150);
+        setSize(750, 150);
 
         // Setup GUI Elements
         this.eMailImage = new StringImage();
